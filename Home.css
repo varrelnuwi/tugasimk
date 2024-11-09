@@ -1,0 +1,145 @@
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+/* Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar-container {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-container h2 {
+    font-size: 24px;
+    color: #ffb03b;
+    margin: 0;
+}
+
+.navbar-container h2 span {
+    color: #fff;
+}
+
+.navbar-container .menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-container .menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.navbar-container .menu ul li a:hover {
+    color: #ffb03b;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-image: url(/assets/background_Borcelle\ PIZZA.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f8f8f8;
+}
+
+header h1 {
+    font-size: 30px;
+    color: #b83b3b;
+}
+
+header p {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.filter-buttons button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-buttons button:hover {
+    background-color: #666;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #1c1b1b;
+    color: #ffffff;
+    padding: 20px;
+    text-align: left;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.footer-logo {
+    margin-bottom: 10px;
+}
+
+.footer-social-icons {
+    margin: 10px 0;
+}
+
+.footer-social-icons a {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.footer-column h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    display: block;
+    color: #b0b0b0;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #b0b0b0;
+}

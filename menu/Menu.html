@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Borcelle-Pizza Menu</title>
+    <link rel="stylesheet" href="Menu.css">
+</head>
+<body>
+    <div class="menu-container">
+        <!-- Sidebar -->
+        <header class="navbar-container">
+            <h2>Borcelle <span>PIZZA</span></h2>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/Home.html">Home</a></li>
+                    <li><a href="/menu/Menu.html">Menu</a></li>
+                    <li><a href="#">Cart</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="menu-content">
+            <header>
+                <h1>Welcome, Pizza Lovers</h1>
+                <p>Eat First, Think Before!</p>
+                <div class="filter-buttons">
+                    <button onclick="navigateToPage('Menu.html')">Pizza</button>
+                    <button onclick="navigateToPage('Drink.html')">Drink</button>
+                    <button onclick="navigateToPage('Lasagna.html')">Lasagna</button>
+                    <button onclick="navigateToPage('Dessert.html')">Dessert</button>
+                </div>
+            </header>
+            
+            <!-- Pizza Menu Grid -->
+            <section class="pizza-menu">
+                <div class="pizza-item">
+                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730081091/pizza1_oybyuw.jpg" alt="Oriental Pizza">
+                    <h3>Spicy Pizza</h3>
+                    <p>$ 89</p>
+                    <button class="cart-button">Add to Cart</button>
+                </div>
+                <div class="pizza-item">
+                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730081394/cheese_mania_qync2s.png" alt="Cheese Pizza">
+                    <h3>Cheese Pizza</h3>
+                    <p>$ 99</p>
+                    <button class="cart-button">Add to Cart</button>
+                </div>
+                <div class="pizza-item">
+                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/sosis_pizza.jpg" alt="Sosis Pizza">
+                    <h3>Sosis Pizza</h3>
+                    <p>$ 89</p>
+                    <button class="cart-button">Add to Cart</button>
+                </div>
+                <div class="pizza-item">
+                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/mozarella_pizza.jpg" alt="Mozarella Pizza">
+                    <h3>Mozarella Pizza</h3>
+                    <p>$ 87</p>
+                    <button class="cart-button">Add to Cart</button>
+                </div>
+                <div class="pizza-item">
+                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/corn_pizza.jpg" alt="Corn Pizza">
+                    <h3>Corn Pizza</h3>
+                    <p>$ 86</p>
+                    <button class="cart-button">Add to Cart</button>
+                </div>
+                <div class="pizza-item">
+                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/beef_cheese_pizza.jpg" alt="Beef Cheese Pizza">
+                    <h3>Beef Cheese Pizza</h3>
+                    <p>$ 89</p>
+                    <button class="cart-button">Add to Cart</button>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+<script src="menu.js"></script>
+</html>
