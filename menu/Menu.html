@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Menu.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Borcelle-Pizza Menu</title>
-    <link rel="stylesheet" href="Menu.css">
 </head>
 <body>
     <div class="menu-container">
-        <!-- Sidebar -->
         <header class="navbar-container">
             <h2>Borcelle <span>PIZZA</span></h2>
             <nav class="menu">
                 <ul>
                     <li><a href="/Home.html">Home</a></li>
                     <li><a href="/menu/Menu.html">Menu</a></li>
-                    <li><a href="#">Cart</a></li>
+                    <li><a href="/cart/cart.html">Cart (<span id="cart-count">0</span>)</a></li>
                 </ul>
             </nav>
         </header>
 
-        <!-- Main Content -->
         <main class="menu-content">
             <header>
                 <h1>Welcome, Pizza Lovers</h1>
@@ -35,47 +34,130 @@
                 </div>
             </header>
             
-            <!-- Pizza Menu Grid -->
             <section class="pizza-menu">
                 <div class="pizza-item">
-                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730081091/pizza1_oybyuw.jpg" alt="Oriental Pizza">
+                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730081091/pizza1_oybyuw.jpg" alt="Spicy Pizza">
                     <h3>Spicy Pizza</h3>
-                    <p>$ 89</p>
-                    <button class="cart-button">Add to Cart</button>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Spicy Pizza', 89)">Add to Cart</button>
                 </div>
+
                 <div class="pizza-item">
-                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730081394/cheese_mania_qync2s.png" alt="Cheese Pizza">
-                    <h3>Cheese Pizza</h3>
-                    <p>$ 99</p>
-                    <button class="cart-button">Add to Cart</button>
+                    <img src="/assets/menu/pizza/BBQ Chicken pizza.jpg" alt="BBQ Chicken Pizza">
+                    <h3>BBQ Chicken Pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('BBQ Chicken', 89)">Add to Cart</button>
                 </div>
+
                 <div class="pizza-item">
-                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/sosis_pizza.jpg" alt="Sosis Pizza">
-                    <h3>Sosis Pizza</h3>
-                    <p>$ 89</p>
-                    <button class="cart-button">Add to Cart</button>
+                    <img src="/assets/menu/pizza/Buffalo Cauliflower.jpg" alt="Buffalo Cauliflower Pizza">
+                    <h3>Buffalo Cauliflower Pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Buffalo Cauliflower', 89)">Add to Cart</button>
                 </div>
+
                 <div class="pizza-item">
-                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/mozarella_pizza.jpg" alt="Mozarella Pizza">
-                    <h3>Mozarella Pizza</h3>
-                    <p>$ 87</p>
-                    <button class="cart-button">Add to Cart</button>
+                    <img src="/assets/menu/pizza/Hawaiian pizza.jpg" alt="Hawaiian Pizza">
+                    <h3>Hawaiian Pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Hawaiian Pizza', 89)">Add to Cart</button>
                 </div>
+
                 <div class="pizza-item">
-                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/corn_pizza.jpg" alt="Corn Pizza">
-                    <h3>Corn Pizza</h3>
-                    <p>$ 86</p>
-                    <button class="cart-button">Add to Cart</button>
+                    <img src="/assets/menu/pizza/Margherita pizza.jpg" alt="Margherita Pizza">
+                    <h3>Margherita Pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Margherita Pizza', 89)">Add to Cart</button>
                 </div>
+
                 <div class="pizza-item">
-                    <img src="https://res.cloudinary.com/do67wzsyh/image/upload/v1730080673/beef_cheese_pizza.jpg" alt="Beef Cheese Pizza">
-                    <h3>Beef Cheese Pizza</h3>
-                    <p>$ 89</p>
-                    <button class="cart-button">Add to Cart</button>
+                    <img src="/assets/menu/pizza/Pepperoni pizza.jpg" alt="Pepperoni Pizza">
+                    <h3>Pepperoni Pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Pepperoni Pizza', 89)">Add to Cart</button>
                 </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/pizza/Pesto Chicken.jpg" alt="Pesto Chicken Pizza">
+                    <h3>Pesto Chicken Pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Pesto Chicken', 89)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/pizza/Truffle Mushroom pizza.jpg" alt="Truffle Mushroom pizza">
+                    <h3>Truffle Mushroom pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Spicy Pizza', 89)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/pizza/Vegetarian pizza.jpg" alt="Vegetarian Pizza">
+                    <h3>Vegetarian Pizza</h3>
+                    <p>$89</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Vegetarian Pizza', 89)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/pizza/neptune pizza.jpg" alt="neptune Pizza">
+                    <h3>neptune Pizza</h3>
+                    <p>$80</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('neptune Pizza', 80)">Add to Cart</button>
+                </div>
+                
             </section>
         </main>
     </div>
 </body>
-<script src="menu.js"></script>
+<script src="/menu/menu.js"></script>
 </html>
