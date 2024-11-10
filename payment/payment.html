@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Payment - Borcelle Pizza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- Include your CSS files -->
     <link rel="stylesheet" href="payment.css">
-    <title>Payment-Trattoria Bella Notte</title>
+    <!-- Include Font Awesome if needed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Include Google Fonts if needed -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="payment-container">
@@ -14,32 +18,29 @@
         </header>
         <main>
             <form id="payment-form">
-                <!-- Credit Card Payment Option -->
-                <input type="radio" id="credit-card" name="payment-method" value="credit-card" required>
-                <label for="credit-card">Credit Card</label>
+                <!-- Payment Option 1 -->
+                <div class="payment-option">
+                    <input type="radio" id="credit-card" name="payment-method" value="Credit Card" required>
+                    <label for="credit-card">Credit Card</label>
+                </div>
 
-                <!-- Bank Transfer Payment Option -->
-                <input type="radio" id="bank-transfer" name="payment-method" value="bank-transfer" required>
-                <label for="bank-transfer">Bank Transfer</label>
+                <!-- Payment Option 2 -->
+                <div class="payment-option">
+                    <input type="radio" id="bank-transfer" name="payment-method" value="Bank Transfer" required>
+                    <label for="bank-transfer">Bank Transfer</label>
+                </div>
 
-                <!-- Cash on Delivery Payment Option -->
-                <input type="radio" id="cash" name="payment-method" value="cash" required>
-                <label for="cash">Cash</label>
+                <!-- Payment Option 3 -->
+                <div class="payment-option">
+                    <input type="radio" id="cash" name="payment-method" value="cash" required>
+                    <label for="cash">cash</label>
+                </div>
 
                 <!-- Confirm Payment Button -->
                 <button type="submit">Confirm Payment</button>
             </form>
         </main>
     </div>
-
-    <script>
-        document.getElementById('payment-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
-            alert(`Thank you! You selected ${selectedMethod}. Your order has been placed.`);
-            // Optionally, redirect to an order confirmation page
-            window.location.href = '/menu/Menu.html';
-        });
-    </script>
+    <script src="payment.js"></script>
 </body>
 </html>
