@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="payment.css">
+    <title>Payment-Trattoria Bella Notte</title>
+</head>
+<body>
+    <div class="payment-container">
+        <header>
+            <h2>Choose Payment Method</h2>
+        </header>
+        <main>
+            <form id="payment-form">
+                <!-- Credit Card Payment Option -->
+                <input type="radio" id="credit-card" name="payment-method" value="credit-card" required>
+                <label for="credit-card">Credit Card</label>
+
+                <!-- Bank Transfer Payment Option -->
+                <input type="radio" id="bank-transfer" name="payment-method" value="bank-transfer" required>
+                <label for="bank-transfer">Bank Transfer</label>
+
+                <!-- Cash on Delivery Payment Option -->
+                <input type="radio" id="cash" name="payment-method" value="cash" required>
+                <label for="cash">Cash</label>
+
+                <!-- Confirm Payment Button -->
+                <button type="submit">Confirm Payment</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
+            alert(`Thank you! You selected ${selectedMethod}. Your order has been placed.`);
+            // Optionally, redirect to an order confirmation page
+            window.location.href = '/menu/Menu.html';
+        });
+    </script>
+</body>
+</html>

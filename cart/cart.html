@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cart.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Cart - Borcelle Pizza</title>
+    <title>Cart-Trattoria Bella Notte</title>
 </head>
 <body>
     <div class="cart-container">
         <header class="navbar-container">
-            <h2>Borcelle <span>PIZZA</span></h2>
+            <h2>Trattoria <span>Bella Notte</span></h2>
             <nav class="menu">
                 <ul>
                     <li><a href="/home/Home.html">Home</a></li>
@@ -39,10 +39,8 @@
             if (cartItems.length === 0) {
                 alert('Keranjang belanja Anda kosong. Silakan tambahkan item sebelum memesan.');
             } else {
-                // Arahkan ke halaman pembayaran atau lakukan tindakan lainnya
-                alert('Pesanan Anda telah diproses! Terima kasih.');
-                // Contoh redirect:
-                // window.location.href = '/checkout/Checkout.html';
+                // Arahkan ke halaman metode pembayaran
+                window.location.href = '/payment/Payment.html';
             }
         });
     </script>
