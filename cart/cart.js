@@ -1,4 +1,3 @@
-// Fungsi untuk menampilkan item di cart
 function displayCart() {
     const cartContainer = document.getElementById("cart-items");
     const totalPrice = document.getElementById("total-price");
@@ -9,9 +8,10 @@ function displayCart() {
 
     cartItems.forEach((item, index) => {
         const itemElement = document.createElement("li");
+        itemElement.classList.add("cart-item");
         itemElement.innerHTML = `
-            ${item.name} - $${item.price} x ${item.quantity}
-            <button class="remove-item" data-index="${index}">Hapus</button>
+            <span>${item.name} - $${item.price} x ${item.quantity}</span>
+            <button class="remove-item" data-index="${index}">Remove</button>
         `;
         cartContainer.appendChild(itemElement);
 
@@ -43,7 +43,20 @@ function updateCartCount() {
     const cartCountElement = document.getElementById('cart-count');
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-    cartCountElement.textContent = totalQuantity;
+    if (totalQuantity > 0) {
+        cartCountElement.style.display = 'inline'; // Tampilkan cart count
+        cartCountElement.textContent = totalQuantity;
+    } else {
+        cartCountElement.style.display = 'none'; // Sembunyikan cart count jika kosong
+    }
+}
+
+// Fungsi checkout (implementasi sederhana)
+function checkout() {
+    alert("Thank you for your purchase!");
+    localStorage.removeItem('cartItems'); // Hapus semua item di cart
+    displayCart(); // Tampilkan ulang cart kosong
+    updateCartCount(); // Perbarui jumlah item di cart count
 }
 
 // Panggil fungsi saat halaman dimuat
