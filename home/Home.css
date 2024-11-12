@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Container */
@@ -22,6 +22,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 10;
 }
 
 .navbar-container h2 {
@@ -51,6 +53,15 @@
     color: #ffb03b;
 }
 
+/* Hide menu icon on larger screens */
+#menu-icon {
+    display: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
 /* Main Content */
 .main-content {
     flex: 1;
@@ -64,26 +75,7 @@
 
 header h1 {
     font-size: 30px;
-    color: #b83b3b;
-}
-
-header p {
-    color: #888;
-    margin-bottom: 20px;
-}
-
-.filter-buttons button {
-    background-color: #444;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.filter-buttons button:hover {
-    background-color: #666;
+    color : #ffb03b;
 }
 
 /* Footer Styling */
@@ -96,7 +88,7 @@ footer {
 
 .footer-container {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -138,186 +130,49 @@ footer {
     color: #ffffff;
 }
 
-.footer-copyright {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #b0b0b0;
+/* Responsive Styling for Smaller Screens */
+@media screen and (max-width: 768px) {
+    /* Show the menu icon and hide the main menu */
+    #menu-icon {
+        display: block; /* Show the menu icon on small screens */
+    }
+
+    /* Hide the menu initially */
+    .navbar-container .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 10;
+    }
+
+    /* Show the menu when .active class is added to navbar-container */
+    .navbar-container.active .menu {
+        display: flex;
+    }
+
+    /* Menu list styling for mobile */
+    .navbar-container .menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Footer adjustments for mobile */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-column {
+        text-align: center;
+    }
 }
-
-/* menu list */
-#menu-icon {
-    display: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    margin-right: 20px;
-}
-
-        /* Main Content */
-        .main-content {
-            position: relative;
-            z-index: 1;
-            flex: 1;
-            padding: 20px;
-            background-color: #f8f8f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-size: cover;
-            background-position: center;
-        }
-
-        header h1 {
-            font-size: 30px;
-            color: #ffb03b;
-        }
-
-        header p {
-            color: #888;
-            margin-bottom: 20px;
-        }
-
-        .filter-buttons button {
-            background-color: #444;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            margin: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .filter-buttons button:hover {
-            background-color: #666;
-        }
-
-        /* Footer Styling */
-        footer {
-            background-color: #1c1b1b;
-            color: #ffffff;
-            padding: 20px;
-            text-align: left;
-        }
-
-        .footer-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .footer-logo {
-            margin-bottom: 10px;
-        }
-
-        .footer-social-icons {
-            margin: 10px 0;
-        }
-
-        .footer-social-icons a {
-            color: #ffffff;
-            font-size: 20px;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 20px;
-        }
-
-        .footer-column h4 {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .footer-column a {
-            display: block;
-            color: #b0b0b0;
-            text-decoration: none;
-            margin-bottom: 5px;
-        }
-
-        .footer-column a:hover {
-            color: #ffffff;
-        }
-
-        .footer-column {
-            text-align: left;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .footer-logo h2 span {
-            color: #ffb03b;
-        }
-
-        .footer-copyright {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #b0b0b0;
-            text-align: center;
-        }
-
-        @media screen and (max-width: 768px) {
-            /* Tampilkan ikon menu dan sembunyikan menu utama */
-            #menu-icon {
-                display: block;
-            }
-        
-            .navbar-container .menu {
-                display: none;
-                flex-direction: column;
-                gap: 10px;
-                position: absolute;
-                top: 60px;
-                right: 20px;
-                background-color: #333;
-                padding: 10px;
-                border-radius: 5px;
-            }
-        
-            /* Tampilkan menu saat .active ditambahkan ke navbar-container */
-            .navbar-container.active .menu {
-                display: flex;
-            }
-        
-            .navbar-container .menu ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-        
-            /* Penyesuaian ukuran teks dan layout */
-            .navbar-container h2 {
-                font-size: 20px;
-            }
-        
-            header h1 {
-                font-size: 24px;
-            }
-        
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        
-            .footer-links {
-                flex-direction: column;
-                gap: 20px;
-            }
-        
-            .footer-column {
-                text-align: center;
-            }
-        
-            /* Sesuaikan ukuran teks footer */
-            .footer-column h4 {
-                font-size: 16px;
-            }
-        }
-        
