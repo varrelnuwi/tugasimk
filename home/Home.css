@@ -152,58 +152,6 @@ footer {
     cursor: pointer;
     margin-right: 20px;
 }
-        /* Reset and basic styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Container */
-        .home-container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Navigation Bar */
-        .navbar-container {
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .navbar-container h2 {
-            font-size: 24px;
-            color: #ffb03b;
-            margin: 0;
-        }
-
-        .navbar-container h2 span {
-            color: #fff;
-        }
-
-        .navbar-container .menu ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .navbar-container .menu ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-
-        .navbar-container .menu ul li a:hover {
-            color: #ffb03b;
-        }
 
         /* Main Content */
         .main-content {
@@ -218,23 +166,6 @@ footer {
             background-size: cover;
             background-position: center;
         }
-
-        /* Background Text Styling */
-        /* Background Text Styling */
-        .main-content::before {
-            content: "Trattoria Bella Notte";
-            position: absolute;
-            top: 50%;
-            right: 10%; /* Adjust this percentage to control the horizontal position */
-            transform: translateY(-50%);
-            font-size: 100px; /* Adjust as needed */
-            color: rgba(0, 0, 0, 0.05); /* Light and subtle color */
-            font-weight: bold;
-            z-index: 0;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
 
         header h1 {
             font-size: 30px;
