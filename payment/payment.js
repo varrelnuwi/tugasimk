@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             openModal();
             generateQRCode(`Total Amount: $${totalAmount}`);
             startCountdown(10); // Set a 10-minute countdown
+            simulatePaymentSuccess(); // Simulate a real-time payment notification
         } else {
             // For other payment methods, process payment, clear cart, and redirect
             alert(`Payment confirmed with ${selectedPaymentMethod.value}. Thank you for your payment!`);
@@ -96,5 +97,16 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(intervalId);
             countdownTimerElement.removeAttribute('data-interval-id');
         }
+    }
+
+    // Simulate a real-time payment notification
+    function simulatePaymentSuccess() {
+        // This function mimics real-time behavior; replace with actual real-time logic as needed
+        setTimeout(() => {
+            alert("Payment Successful! Thank you for your payment.");
+            closeModal();
+            localStorage.removeItem('cartItems'); // Clear cart items
+            window.location.href = '/menu/Menu.html'; // Redirect to menu or confirmation page
+        }, 5000); // Simulated 5-second delay for payment success
     }
 });
