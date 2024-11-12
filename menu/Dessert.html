@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Menu.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Trattoria Bella Notte Menu-Dessert</title>
+</head>
+<body>
+    <div class="menu-container">
+        <header class="navbar-container">
+            <h2>Trattoria <span>Bella Notte</span></h2>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/home/Home.html">Home</a></li>
+                    <li><a href="/menu/Menu.html">Menu</a></li>
+                    <li><a href="/cart/cart.html">Cart <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="menu-content ">
+            <header>
+                <h1>Ciao, welcome to Trattoria Bella Notte</h1>
+                <p>Eat First, Think Before!</p>
+                <div class="filter-buttons m-5 sm:m-6 md:m-6 lg:m-7 xl:m-10 ">
+                    <button onclick="navigateToPage('Menu.html')">Pizza</button>
+                    <button onclick="navigateToPage('Drink.html')">Drink</button>
+                    <button onclick="navigateToPage('Lasagna.html')">Lasagna</button>
+                    <button onclick="navigateToPage('Dessert.html')">Dessert</button>
+                </div>
+            </header>
+            
+            <section class="pizza-menu">
+                <div class="pizza-item">
+                    <img src="/assets/menu/Dessert/puding.jpg" alt="Panna Cotta" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Vanilla Panna Cotta</h3>
+                    <p>$5</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Vanilla Panna Cotta', 5)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Dessert/cake crumble.jpg" alt="RollCake Crumble"
+                    class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>RollCake Crumble</h3>
+                    <p>$8</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('RollCake Crumble', 8)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Dessert/chocolatte tiramisu.jpeg" alt="Chocolatte Tiramisu" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Chocolatte Tiramisu</h3>
+                    <p>$10</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Chocolatte Tiramisu', 10)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Dessert/ice cream.jpeg" alt="Ice Cream"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Ice Cream</h3>
+                    <p>$5</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Ice Cream', 5)">Add to Cart</button>
+                </div>
+                
+            </section>
+        </main>
+    </div>
+</body>
+<script src="/menu/menu.js"></script>
+</html>

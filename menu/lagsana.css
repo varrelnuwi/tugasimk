@@ -1,0 +1,134 @@
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+/* Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+.navbar-container {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-container h2 {
+    font-size: 24px;
+    color: #ffb03b;
+    margin: 0;
+}
+
+.navbar-container h2 span {
+    color: #fff;
+}
+
+.navbar-container .menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-container .menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.navbar-container .menu ul li a:hover {
+    color: #ffb03b;
+}
+
+/* Main Content */
+.menu-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+header h1 {
+    font-size: 30px;
+    color: #b83b3b;
+}
+
+header p {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.filter-buttons button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: #666;
+}
+
+/* Pizza Menu */
+.pizza-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 80px;
+}
+
+.pizza-item {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.pizza-item:hover {
+    transform: scale(1.05);
+}
+
+.pizza-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.pizza-item h3 {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.pizza-item p {
+    color: #b83b3b;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cart-button {
+    background-color: #b83b3b;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart-button:hover {
+    background-color: #ff6347;
+}

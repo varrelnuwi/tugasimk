@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Drink.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Trattoria Bella Notte Menu-Drink</title>
+</head>
+<body>
+    <div class="menu-container">
+        <header class="navbar-container">
+            <h2>Trattoria <span>Bella Notte</span></h2>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/home/Home.html">Home</a></li>
+                    <li><a href="/menu/Menu.html">Menu</a></li>
+                    <li><a href="/cart/cart.html">Cart <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="menu-content ">
+            <header>
+                <h1>Ciao, welcome to Trattoria Bella Notte</h1>
+                <p>Eat First, Think Before!</p>
+                <div class="filter-buttons m-5 sm:m-6 md:m-6 lg:m-7 xl:m-10 ">
+                    <button onclick="navigateToPage('Menu.html')">Pizza</button>
+                    <button onclick="navigateToPage('Drink.html')">Drink</button>
+                    <button onclick="navigateToPage('Lasagna.html')">Lasagna</button>
+                    <button onclick="navigateToPage('Dessert.html')">Dessert</button>
+                </div>
+            </header>
+            
+            <section class="pizza-menu">
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Aperol Spritz.jpg" alt="Aperol" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Aperol</h3>
+                    <p>$10</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Aperol', 10)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Birra Moretti.jpg" alt="Birra Moretti"
+                    class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Birra Moretti</h3>
+                    <p>$7</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Birra Moretti', 7)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/bittersweet campari.jpg" alt="bittersweet campari" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>bittersweet campari</h3>
+                    <p>$8</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('bittersweet campari', 8)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/coffe.jpg" alt="coffe"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>coffe</h3>
+                    <p>$4</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('coffe', 4)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Italian Red Wine.jpg" alt="Italian Red Wine"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Italian Red Wine</h3>
+                    <p>$12</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Italian Red Wine', 12)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Limoncello.jpg" alt="Limoncello"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Limoncello</h3>
+                    <p>$9</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Limoncello', 9)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Mineral Water.jpg" alt="Mineral Water"class="rounded-md sm:h-42 md:h-45 lg:h-64">
+                    <h3>Mineral Water</h3>
+                    <p>$3</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Mineral Water', 3)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Negroni.jpg" alt="Negroni"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Negroni</h3>
+                    <p>$11</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Negroni', 11)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Prosecco cocktails.jpg" alt="Prosecco cocktails" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Vegetarian Pizza</h3>
+                    <p>$10</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Prosecco cocktails', 10)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Minuman/Bellini.jpg" alt="Bellini" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Bellini</h3>
+                    <p>$8</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Bellini', 8)">Add to Cart</button>
+                </div>
+                
+            </section>
+        </main>
+    </div>
+</body>
+<script src="/menu/menu.js"></script>
+</html>

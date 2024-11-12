@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Drink.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Trattoria Bella Notte Menu-Lasagna</title>
+</head>
+<body>
+    <div class="menu-container">
+        <header class="navbar-container">
+            <h2>Trattoria <span>Bella Notte</span></h2>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/home/Home.html">Home</a></li>
+                    <li><a href="/menu/Menu.html">Menu</a></li>
+                    <li><a href="/cart/cart.html">Cart <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="menu-content ">
+            <header>
+                <h1>Ciao, welcome to Trattoria Bella Notte</h1>
+                <p>Eat First, Think Before!</p>
+                <div class="filter-buttons m-5 sm:m-6 md:m-6 lg:m-7 xl:m-10 ">
+                    <button onclick="navigateToPage('Menu.html')">Pizza</button>
+                    <button onclick="navigateToPage('Drink.html')">Drink</button>
+                    <button onclick="navigateToPage('Lasagna.html')">Lasagna</button>
+                    <button onclick="navigateToPage('Dessert.html')">Dessert</button>
+                </div>
+            </header>
+            
+            <section class="pizza-menu">
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna ai Funghi.jpg" alt="Lasagna ai Funghi" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Lasagna ai Funghi</h3>
+                    <p>$15</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna ai Funghi', 15)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna al Forno.jpg" alt="Lasagna al Forno"
+                    class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Lasagna al Forno</h3>
+                    <p>$14</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna al Forno', 14)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna al Pesto.jpg" alt="Lasagna al Pesto" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Lasagna al Pesto</h3>
+                    <p>$16</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna al Pesto', 16)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna al ragù.jpg" alt="Lasagna al ragù"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Lasagna al ragù</h3>
+                    <p>$17</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna al ragù', 17)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna alla Bolognese.jpg" alt="Lasagna alla Bolognese"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Italian Red Wine</h3>
+                    <p>$18</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna alla Bolognese', 18)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna di primavera.jpg" alt="Lasagna di primavera"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Lasagna di primavera</h3>
+                    <p>$13</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna di primavera', 13)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna Napoletana.jpg" alt="Lasagna Napoletana"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Lasagna Napoletana</h3>
+                    <p>$19</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna Napoletana', 19)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna Piccante.jpg" alt="Lasagna Piccante"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Negroni</h3>
+                    <p>$17</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna Piccante', 17)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/Lasagna Vegan.jpg" alt="Lasagna Vegan" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>Lasagna Vegan   </h3>
+                    <p>$15</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('Lasagna Vegan', 15)">Add to Cart</button>
+                </div>
+
+                <div class="pizza-item">
+                    <img src="/assets/menu/Lasagna/chiken lasagna.jpg" alt="chiken lasagna" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
+                    <h3>chiken lasagna</h3>
+                    <p>$14</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                    <button class="cart-button" onclick="addToCart('chiken lasagna', 14)">Add to Cart</button>
+                </div>
+                
+            </section>
+        </main>
+    </div>
+</body>
+<script src="/menu/menu.js"></script>
+</html>
