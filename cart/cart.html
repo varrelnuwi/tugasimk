@@ -33,16 +33,5 @@
     </div>
 
     <script src="/cart/cart.js"></script>
-    <script>
-        document.getElementById('order-now').addEventListener('click', () => {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            if (cartItems.length === 0) {
-                alert('Keranjang belanja Anda kosong. Silakan tambahkan item sebelum memesan.');
-            } else {
-                // Arahkan ke halaman metode pembayaran
-                window.location.href = '/payment/Payment.html';
-            }
-        });
-    </script>
 </body>
 </html>

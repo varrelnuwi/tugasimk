@@ -21,48 +21,42 @@ document.querySelectorAll('.filter-buttons button').forEach((button, index) => {
 
 //hide angka 0
 // Array untuk menyimpan item di cart
-let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+// Function to add an item to the cart
+function addToCart(itemName, itemPrice) {
+    // Get existing cart items from localStorage or initialize an empty array
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-    // Fungsi untuk memperbarui jumlah item
-    function updateQuantity(button, change) {
-        const quantityElement = button.parentElement.querySelector('.quantity');
-        let currentQuantity = parseInt(quantityElement.textContent);
-        currentQuantity = Math.max(1, currentQuantity + change);
-        quantityElement.textContent = currentQuantity;
+    // Check if item is already in the cart
+    const existingItem = cartItems.find(item => item.name === itemName);
+
+    if (existingItem) {
+        // If item exists, increase its quantity
+        existingItem.quantity += 1;
+    } else {
+        // If item doesn't exist, add it as a new item
+        cartItems.push({ name: itemName, price: itemPrice, quantity: 1 });
     }
 
-    // Fungsi untuk menambahkan item ke cart
-    function addToCart(pizzaName, price) {
-        const pizzaItem = event.target.parentElement;
-        const quantityElement = pizzaItem.querySelector('.quantity');
-        const quantity = parseInt(quantityElement.textContent);
+    // Save the updated cart back to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-        const existingItem = cartItems.find(item => item.name === pizzaName);
-        if (existingItem) {
-            existingItem.quantity += quantity;
-        } else {
-            cartItems.push({ name: pizzaName, price: price, quantity: quantity });
-        }
+    // Update the cart count displayed in the menu
+    updateCartCount();
+}
 
-        alert(`Added ${quantity} ${pizzaName}(s) to the cart!`);
-        localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Simpan ke localStorage
-        updateCartCount();
+// Function to update the cart item count in the menu
+function updateCartCount() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const cartCountElement = document.getElementById('cart-count');
+
+    if (totalQuantity > 0) {
+        cartCountElement.style.display = 'inline';
+        cartCountElement.textContent = totalQuantity;
+    } else {
+        cartCountElement.style.display = 'none';
     }
+}
 
-    // Fungsi untuk memperbarui jumlah item di cart
-    function updateCartCount() {
-        const cartCountElement = document.getElementById('cart-count');
-        const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-        if (totalQuantity > 0) {
-            cartCountElement.style.display = 'inline'; // Tampilkan cart count
-            cartCountElement.textContent = totalQuantity;
-        } else {
-            cartCountElement.style.display = 'none'; // Sembunyikan cart count jika kosong
-        }
-    }
-
-    // Panggil fungsi saat halaman dimuat
-    document.addEventListener("DOMContentLoaded", () => {
-        updateCartCount(); // Update jumlah item di menu
-    });
+// Call the function on page load to initialize the cart count
+document.addEventListener('DOMContentLoaded', updateCartCount);

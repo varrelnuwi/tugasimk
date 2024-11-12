@@ -1,11 +1,13 @@
+// Function to display items in the cart
 function displayCart() {
     const cartContainer = document.getElementById("cart-items");
-    const totalPrice = document.getElementById("total-price");
+    const totalPriceElement = document.getElementById("total-price");
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-    cartContainer.innerHTML = ""; 
+    cartContainer.innerHTML = ""; // Clear current cart display
     let total = 0;
 
+    // Populate the cart with items
     cartItems.forEach((item, index) => {
         const itemElement = document.createElement("li");
         itemElement.classList.add("cart-item");
@@ -15,12 +17,13 @@ function displayCart() {
         `;
         cartContainer.appendChild(itemElement);
 
+        // Update the total price
         total += item.price * item.quantity;
     });
 
-    totalPrice.textContent = `Total: $${total}`;
+    totalPriceElement.textContent = `Total: $${total.toFixed(2)}`;
 
-    // Tambahkan event listener ke semua tombol hapus
+    // Add event listeners to each remove button
     document.querySelectorAll('.remove-item').forEach(button => {
         button.addEventListener('click', (event) => {
             const index = event.target.getAttribute('data-index');
@@ -29,37 +32,35 @@ function displayCart() {
     });
 }
 
-// Fungsi untuk menghapus item dari cart
+// Function to remove an item from the cart
 function removeItem(index) {
-    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    cartItems.splice(index, 1); // Hapus item berdasarkan index
-    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Perbarui localStorage
-    displayCart(); // Tampilkan ulang cart
-    updateCartCount(); // Perbarui jumlah item di cart
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.splice(index, 1); // Remove item by index
+    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update localStorage
+    displayCart(); // Refresh cart display
+    updateCartCount(); // Update the cart item count
 }
 
-// Fungsi untuk memperbarui jumlah item di cart count
+// Update the cart item count for cart page
 function updateCartCount() {
-    const cartCountElement = document.getElementById('cart-count');
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const cartCountElement = document.getElementById('cart-count');
+
     if (totalQuantity > 0) {
-        cartCountElement.style.display = 'inline'; // Tampilkan cart count
+        cartCountElement.style.display = 'inline';
         cartCountElement.textContent = totalQuantity;
     } else {
-        cartCountElement.style.display = 'none'; // Sembunyikan cart count jika kosong
+        cartCountElement.style.display = 'none';
     }
 }
 
-// Fungsi checkout (implementasi sederhana)
-function checkout() {
-    alert("Thank you for your purchase!");
-    localStorage.removeItem('cartItems'); // Hapus semua item di cart
-    displayCart(); // Tampilkan ulang cart kosong
-    updateCartCount(); // Perbarui jumlah item di cart count
-}
+// Redirect to payment page when "Pesan Sekarang" is clicked
+document.getElementById('order-now').addEventListener('click', () => {
+    window.location.href = '/payment/payment.html'; // Adjust the path to the actual location of payment.html
+});
 
-// Panggil fungsi saat halaman dimuat
+// Call displayCart and updateCartCount when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     displayCart();
     updateCartCount();
