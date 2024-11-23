@@ -66,3 +66,11 @@ let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     document.addEventListener("DOMContentLoaded", () => {
         updateCartCount(); // Update jumlah item di menu
     });
+
+    //menu list navbar
+    function toggleMenu() {
+        document.querySelector('.navbar-container').classList.toggle('active');
+    }
+    
+    document.getElementById('menu-icon').addEventListener('click', toggleMenu);
+    
