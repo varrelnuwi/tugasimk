@@ -74,8 +74,9 @@
 }
 
 header h1 {
-    font-size: 30px;
+    font-size: 48px;
     color : #ffb03b;
+    text-align: center;
 }
 
 /* Footer Styling */
