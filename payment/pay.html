@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/payment/payment.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="payment.js"></script>
+    <title>Pembayaran</title>
 </head>
 <body class="bg-gray-50 min-h-screen font-sans">
   <header class="navbar-container">
@@ -23,10 +24,10 @@
       </div>
       <div class="space-y-6">
           <div class="bg-white rounded-lg p-4 border border-gray-200"><h2 class="text-lg font-medium mb-4">Tipe Pesanan</h2><div class="grid grid-cols-2 gap-4 order-type">
-            <button class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button">
+            <button class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button" onclick="selectOrderType('dine-in')">
               <i class="fas fa-utensils text-custom mr-3"></i><span>Makan di Tempat</span>
             </button>
-            <button class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button">
+            <button class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button" onclick="selectOrderType('takeaway')">
               <i class="fas fa-shopping-bag text-custom mr-3"></i><span>Bawa Pulang</span>
             </button></div></div>
           </div>
@@ -74,9 +75,9 @@
                   </div>
               </div>
           </div>
-          <div class="bg-white rounded-lg p-4 border border-gray-200">
+          <div class="bg-white rounded-lg p-4 border border-gray-200 complete-payment" style="display: none;">
             <h2 class="text-lg font-medium mb-4">Complete Payment</h2>
-            <div class="grid grid-cols-3 gap-4 complete-payment">
+            <div class="grid grid-cols-3 gap-4">
                 <button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button"><i class="fas fa-credit-card text-custom mr-3"></i><span>Credit Card/Debit</span></button>
                 <button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button" onclick="selectQris()"><i class="fas fa-qrcode text-custom mr-3"></i><span>QRIS</span></button>
                 <button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button"><i class="fas fa-money-bill text-custom mr-3"></i><span>Cash</span></button>
@@ -96,23 +97,6 @@
         </div>
       </div>
   </main>
-<script>
-    let paymentMethod = '';
-
-    function selectQris() {
-        paymentMethod = 'qris';
-    }
-
-    function proceedToPayment() {
-        if (paymentMethod === 'qris') {
-            const totalPembayaran = document.querySelector('.total-pembayaran').textContent;
-            localStorage.setItem('totalPembayaran', totalPembayaran);
-            window.location.href = '/payment/MethodQris.html';
-        } else {
-            // Handle other payment methods
-        }
-    }
-</script>
 <script src="/payment/payment.js"></script>
 </body>
 </html>
