@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const transactionDate = new Date().toLocaleString('id-ID', { dateStyle: 'full', timeStyle: 'short' });
     document.getElementById('transaction-date').textContent = transactionDate;
 
-    const totalPembayaran = parseFloat(localStorage.getItem('totalPembayaran'));
-    const serviceFee = parseFloat(localStorage.getItem('serviceFee')); // Retrieve service fee from localStorage
-    const totalBill = totalPembayaran + serviceFee;
-    const paymentMethod = localStorage.getItem('paymentMethod');
-    const buyerName = localStorage.getItem('buyerName');
-    const cart = JSON.parse(localStorage.getItem('cart'));
+    let totalPembayaran = parseFloat(localStorage.getItem('totalPembayaran'));
+    let serviceFee = parseFloat(localStorage.getItem('serviceFee'));
+    let totalBill = totalPembayaran + serviceFee;
+    let paymentMethod = localStorage.getItem('paymentMethod');
+    let buyerName = localStorage.getItem('buyerName');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     document.getElementById('total-payment').textContent = `Rp ${totalPembayaran.toLocaleString('id-ID')}`;
     document.getElementById('service-fee').textContent = `Rp ${serviceFee.toLocaleString('id-ID')}`;
@@ -32,27 +32,18 @@ document.addEventListener('DOMContentLoaded', function () {
         productDetailsContainer.appendChild(productDetail);
     });
 
-    // Clear local storage after displaying the data
-    localStorage.removeItem('cart');
-    localStorage.removeItem('totalPembayaran');
-    localStorage.removeItem('serviceFee'); // Clear service fee from localStorage
-    localStorage.removeItem('totalBill');
-    localStorage.removeItem('paymentMethod');
-    localStorage.removeItem('buyerName');
-
-    // Reset cart on home page
-    if (window.opener) {
-        window.opener.localStorage.removeItem('cart');
-    }
-
-    // Add event listener to "Back to Home" button
-    const backToHomeButton = document.querySelector('.back-to-home');
+    const backToHomeButton = document.getElementById('back-to-home');
     backToHomeButton.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent default navigation
-        localStorage.removeItem('cart'); // Clear cart data
-        if (window.opener) {
-            window.opener.localStorage.removeItem('cart'); // Clear cart on home page
-        }
-        window.location.href = '/menu/Menu.html'; // Redirect to home page
+        event.preventDefault();
+        console.log('Clearing cart data...');
+        localStorage.removeItem('cart');
+        localStorage.removeItem('cartItems'); // Clear cart items
+        localStorage.removeItem('totalPembayaran');
+        localStorage.removeItem('serviceFee');
+        localStorage.removeItem('totalBill');
+        localStorage.removeItem('paymentMethod');
+        localStorage.removeItem('buyerName');
+        console.log('Cart data cleared.');
+        window.location.href = '/menu/Menu.html';
     });
 });

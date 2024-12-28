@@ -1,19 +1,3 @@
-document.querySelectorAll('.payment-option').forEach((button) => {
-    button.addEventListener('click', function () {
-        // Hapus status aktif dari semua tombol
-        document.querySelectorAll('.payment-option').forEach(btn => {
-            btn.classList.remove('border-blue-500', 'bg-blue-50');
-        });
-
-        // Tambahkan status aktif ke tombol yang diklik
-        this.classList.add('border-blue-500', 'bg-blue-50');
-
-        // Tampilkan metode pembayaran yang dipilih
-        const selectedMethod = this.getAttribute('data-method');
-        document.getElementById('selected-method').textContent = `Metode pembayaran dipilih: ${selectedMethod}`;
-    });
-});
-
 document.addEventListener('DOMContentLoaded', function () {
     const paymentMethodButtons = document.querySelectorAll('.payment-method button');
     const completePaymentSection = document.querySelector('.complete-payment');
@@ -99,6 +83,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     bayarButton.addEventListener('click', function (event) {
         proceedToPayment();
+    });
+
+    document.querySelectorAll('.payment-option').forEach((button) => {
+        button.addEventListener('click', function () {
+            // Hapus status aktif dari semua tombol
+            document.querySelectorAll('.payment-option').forEach(btn => {
+                btn.classList.remove('border-blue-500', 'bg-blue-50');
+            });
+
+            // Tambahkan status aktif ke tombol yang diklik
+            this.classList.add('border-blue-500', 'bg-blue-50');
+
+            // Tampilkan metode pembayaran yang dipilih
+            const selectedMethod = this.getAttribute('data-method');
+            document.getElementById('selected-method').textContent = `Metode pembayaran dipilih: ${selectedMethod}`;
+        });
     });
 });
 

@@ -16,9 +16,22 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
-function redirectToPay() {
-    window.location.href = '/payment/pay.html';
+function checkPaymentStatus() {
+    // Simulate checking payment status
+    const paymentStatus = true; // Replace with actual status check
+
+    if (paymentStatus) {
+        window.location.href = '/payment/PembayaranBerhasil.html';
+    } else {
+        alert('Payment not completed yet.');
+    }
 }
+
+// Modify the existing redirectToPay function to check payment status
+function redirectToPay() {
+    checkPaymentStatus();
+}
+
 window.onload = function () {
     const display = document.querySelector('#timer');
     const minutes = 9;
@@ -27,7 +40,7 @@ window.onload = function () {
 
     const totalPembayaran = localStorage.getItem('totalPembayaran');
     if (totalPembayaran) {
-        document.querySelector('#payment-total').textContent = totalPembayaran;
+        document.querySelector('#payment-total').textContent = 'Rp' + parseInt(totalPembayaran).toLocaleString('id-ID');
     }
 
     const qr = new QRious({

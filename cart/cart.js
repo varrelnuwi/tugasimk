@@ -88,3 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
     document.getElementById('order-now').addEventListener('click', redirectToPayment);
 });
+
+// Clear cart data after reaching the payment success page
+if (window.location.pathname.includes('PembayaranBerhasil.html')) {
+    console.log('Payment successful. Clearing cart...');
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('totalPrice');
+    localStorage.removeItem('serviceFee');
+    console.log('Cart has been reset after payment success.');
+}
