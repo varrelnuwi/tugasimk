@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/payment/payment.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="payment.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+  <header class="navbar-container">
+    <nav class="menu">
+        <ul>
+            <li><a href="/home/Home.html">Home</a></li>
+            <li><a href="/menu/Menu.html">Menu</a></li>
+            <li><a href="/cart/cart.html">Cart</a></li>
+        </ul>
+    </nav>
+  </header>
+  <main class="max-w-3xl mx-auto px-4 py-8">
+      <div class="mb-6 flex items-center">
+          <h1 class="text-2xl font-semibold">Pembayaran</h1>
+      </div>
+      <div class="space-y-6">
+          <div class="bg-white rounded-lg p-4 border border-gray-200"><h2 class="text-lg font-medium mb-4">Tipe Pesanan</h2><div class="grid grid-cols-2 gap-4 order-type">
+            <button class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button">
+              <i class="fas fa-utensils text-custom mr-3"></i><span>Makan di Tempat</span>
+            </button>
+            <button class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button">
+              <i class="fas fa-shopping-bag text-custom mr-3"></i><span>Bawa Pulang</span>
+            </button></div></div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+              <h2 class="text-lg font-medium mb-4">Payment Method</h2>
+              <div class="grid grid-cols-2 gap-4 payment-method">
+                <button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button"><i class="fas fa-credit-card text-custom mr-3"></i><span>Pembayaran Online</span>
+                </button><button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button"><i class="fas fa-cash-register text-custom mr-3"></i><span>Bayar di Kasir</span></button></div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+              <h2 class="text-lg font-medium mb-4">Informasi Pembayaran</h2>
+              <p class="text-sm text-gray-500 mb-4">Data digunakan untuk proses pemesanan. Pastikan Anda memasukkan data yang valid.</p>
+              <div class="space-y-4">
+                  <div class="bg-gray-100 p-4 rounded-lg">
+                      <div class="relative">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <i class="fas fa-user text-gray-400"></i>
+                          </div>
+                          <input type="text" placeholder="Nama Lengkap" class="pl-10 block w-full !rounded-button border-gray-300 focus:border-custom focus:ring focus:ring-custom focus:ring-opacity-50"/>
+                      </div>
+                  </div>
+                  <div class="bg-gray-100 p-4 rounded-lg">
+                      <div class="relative">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <i class="fas fa-envelope text-gray-400"></i>
+                          </div>
+                          <input type="email" placeholder="Email" class="pl-10 block w-full !rounded-button border-gray-300 focus:border-custom focus:ring focus:ring-custom focus:ring-opacity-50"/>
+                      </div>
+                  </div>
+                  <div class="bg-gray-100 p-4 rounded-lg">
+                      <div class="relative">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <i class="fas fa-phone text-gray-400"></i>
+                          </div>
+                          <input type="tel" placeholder="Nomor HP" class="pl-10 block w-full !rounded-button border-gray-300 focus:border-custom focus:ring focus:ring-custom focus:ring-opacity-50"/>
+                      </div>
+                  </div>
+                  <div class="bg-gray-100 p-4 rounded-lg nomor-meja-field">
+                      <div class="relative">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                              <i class="fas fa-table text-gray-400"></i>
+                          </div>
+                          <input type="text" placeholder="Nomor Meja" class="pl-10 block w-full !rounded-button border-gray-300 focus:border-custom focus:ring focus:ring-custom focus:ring-opacity-50"/>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <h2 class="text-lg font-medium mb-4">Complete Payment</h2>
+            <div class="grid grid-cols-3 gap-4 complete-payment">
+                <button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button"><i class="fas fa-credit-card text-custom mr-3"></i><span>Credit Card/Debit</span></button>
+                <button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button" onclick="selectQris()"><i class="fas fa-qrcode text-custom mr-3"></i><span>QRIS</span></button>
+                <button class="flex items-center p-4 border border-gray-200 rounded-lg hover:border-custom !rounded-button"><i class="fas fa-money-bill text-custom mr-3"></i><span>Cash</span></button>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg p-4 border border-gray-200">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-medium">Total Pembayaran</h2>
+                <i class="fas fa-chevron-down text-gray-400"></i>
+            </div>
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold total-pembayaran">$69.00</span>
+                <button class="px-8 py-3 bg-custom text-white font-medium !rounded-button hover:bg-custom/90" onclick="proceedToPayment()">
+                    Bayar
+                </button>
+            </div>
+        </div>
+      </div>
+  </main>
+<script>
+    let paymentMethod = '';
+
+    function selectQris() {
+        paymentMethod = 'qris';
+    }
+
+    function proceedToPayment() {
+        if (paymentMethod === 'qris') {
+            const totalPembayaran = document.querySelector('.total-pembayaran').textContent;
+            localStorage.setItem('totalPembayaran', totalPembayaran);
+            window.location.href = '/payment/MethodQris.html';
+        } else {
+            // Handle other payment methods
+        }
+    }
+</script>
+<script src="/payment/payment.js"></script>
+</body>
+</html>

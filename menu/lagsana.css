@@ -58,15 +58,6 @@
     background-color: #f8f8f8;
 }
 
-/* Hide menu icon on larger screens */
-#menu-icon {
-    display: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    margin-right: 20px;
-}
-
 header h1 {
     font-size: 30px;
     color: #b83b3b;
@@ -140,36 +131,4 @@ header p {
 
 .cart-button:hover {
     background-color: #ff6347;
-}
-
-/* Responsive Styling for Smaller Screens */
-@media screen and (max-width: 768px) {
-    /* Show the menu icon and hide the main menu */
-    #menu-icon {
-        display: block; /* Show the menu icon on small screens */
-    }
-
-    /* Hide the menu initially */
-    .navbar-container .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: #333;
-        padding: 10px;
-        border-radius: 5px;
-        z-index: 10;
-    }
-
-    /* Show the menu when .active class is added to navbar-container */
-    .navbar-container.active .menu {
-        display: flex;
-    }
-
-    /* Menu list styling for mobile */
-    .navbar-container .menu ul {
-        flex-direction: column;
-        gap: 10px;
-    }
 }

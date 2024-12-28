@@ -1,112 +1,108 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const paymentForm = document.getElementById('payment-form');
-    const bankTransferModal = document.getElementById('bank-transfer-modal');
-    const totalAmountElement = document.getElementById('total-amount');
-    const countdownTimerElement = document.getElementById('countdown-timer');
-    const closeModalButton = document.getElementById('close-modal');
-    const finishPaymentButton = document.getElementById('finish-payment');
+// JavaScript untuk mengelola interaksi
+document.querySelectorAll('.payment-option').forEach((button) => {
+    button.addEventListener('click', function () {
+        // Hapus status aktif dari semua tombol
+        document.querySelectorAll('.payment-option').forEach(btn => {
+            btn.classList.remove('border-blue-500', 'bg-blue-50');
+        });
 
-    // Retrieve and display the total amount from the cart
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-    totalAmountElement.textContent = `$${totalAmount}`;
+        // Tambahkan status aktif ke tombol yang diklik
+        this.classList.add('border-blue-500', 'bg-blue-50');
 
-    // Handle payment form submission
-    paymentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
-        if (!selectedPaymentMethod) {
-            alert("Please select a payment method.");
-            return;
-        }
-
-        if (selectedPaymentMethod.value === "bank-transfer") {
-            // Open the bank transfer modal with QR code and countdown timer
-            openModal();
-            generateQRCode(`Total Amount: $${totalAmount}`);
-            startCountdown(10); // Set a 10-minute countdown
-            simulatePaymentSuccess(); // Simulate a real-time payment notification
-        } else {
-            // For other payment methods, process payment, clear cart, and redirect
-            alert(`Payment confirmed with ${selectedPaymentMethod.value}. Thank you for your payment!`);
-            localStorage.removeItem('cartItems'); // Clear cart items
-            window.location.href = '/menu/Menu.html'; // Redirect to menu or confirmation page
-        }
+        // Tampilkan metode pembayaran yang dipilih
+        const selectedMethod = this.getAttribute('data-method');
+        document.getElementById('selected-method').textContent = `Metode pembayaran dipilih: ${selectedMethod}`;
     });
+});
 
-    // Function to open the modal
-    function openModal() {
-        bankTransferModal.style.display = 'flex';
-    }
+document.addEventListener('DOMContentLoaded', function () {
+    const paymentMethodButtons = document.querySelectorAll('.payment-method button');
+    const completePaymentButtons = document.querySelectorAll('.complete-payment button');
+    const orderTypeButtons = document.querySelectorAll('.order-type button');
+    const nomorMejaField = document.querySelector('.nomor-meja-field');
+    const qrisButton = document.querySelector('.complete-payment button:nth-child(2)');
+    const totalPembayaranElement = document.querySelector('.total-pembayaran');
+    const bayarButton = document.querySelector('.bg-custom');
 
-    // Function to close the modal
-    closeModalButton.addEventListener('click', closeModal);
-    function closeModal() {
-        bankTransferModal.style.display = 'none';
-        clearCountdown();
-    }
-
-    // Function to finish the payment, clear cart, and redirect
-    finishPaymentButton.addEventListener('click', finishPayment);
-    function finishPayment() {
-        alert("Thank you for completing your payment!");
-        localStorage.removeItem('cartItems'); // Clear cart items
-        closeModal(); // Close modal
-        window.location.href = '/menu/Menu.html'; // Redirect to menu or confirmation page
-    }
-
-    // Function to generate QR code
-    function generateQRCode(text) {
-        const qrCodeElement = document.getElementById('qr-code');
-        qrCodeElement.innerHTML = ''; // Clear any existing QR code
-        new QRCode(qrCodeElement, {
-            text: text,
-            width: 128,
-            height: 128,
+    function addHoverEffect(buttons) {
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function () {
+                if (!button.classList.contains('active')) {
+                    button.classList.add('hover');
+                }
+            });
+            button.addEventListener('mouseleave', function () {
+                button.classList.remove('hover');
+            });
         });
     }
 
-    // Countdown timer function
-    function startCountdown(minutes) {
-        let timeRemaining = minutes * 60; // Convert minutes to seconds
-        countdownTimerElement.textContent = `${minutes}:00`; // Initial time display
-
-        const countdownInterval = setInterval(() => {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            countdownTimerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            
-            if (timeRemaining > 0) {
-                timeRemaining--;
-            } else {
-                clearInterval(countdownInterval);
-                alert("Time expired! Please start the payment process again.");
-                closeModal();
-            }
-        }, 1000);
-
-        // Store interval ID for clearing later
-        countdownTimerElement.setAttribute('data-interval-id', countdownInterval);
+    function addClickEffect(buttons, callback) {
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                if (button.classList.contains('active')) {
+                    button.classList.remove('active');
+                } else {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    if (callback) callback(button);
+                }
+            });
+        });
     }
 
-    // Clear countdown timer if modal is closed or payment is finished
-    function clearCountdown() {
-        const intervalId = countdownTimerElement.getAttribute('data-interval-id');
-        if (intervalId) {
-            clearInterval(intervalId);
-            countdownTimerElement.removeAttribute('data-interval-id');
+    addHoverEffect(paymentMethodButtons);
+    addHoverEffect(completePaymentButtons);
+    addHoverEffect(orderTypeButtons);
+
+    addClickEffect(paymentMethodButtons, function (button) {
+        if (button.textContent.includes('Pembayaran Online')) {
+            completePaymentButtons.forEach(btn => btn.style.display = 'none');
+            qrisButton.style.display = 'flex';
+        } else {
+            completePaymentButtons.forEach(btn => btn.style.display = 'flex');
         }
+    });
+
+    addClickEffect(completePaymentButtons);
+    addClickEffect(orderTypeButtons, function (button) {
+        if (button.textContent.includes('Bawa Pulang')) {
+            nomorMejaField.style.display = 'none';
+        } else {
+            nomorMejaField.style.display = 'block';
+        }
+    });
+
+    const totalPrice = localStorage.getItem('totalPrice');
+    if (totalPrice) {
+        totalPembayaranElement.textContent = `$${totalPrice}`;
     }
 
-    // Simulate a real-time payment notification
-    function simulatePaymentSuccess() {
-        // This function mimics real-time behavior; replace with actual real-time logic as needed
-        setTimeout(() => {
-            alert("Payment Successful! Thank you for your payment.");
-            closeModal();
-            localStorage.removeItem('cartItems'); // Clear cart items
-            window.location.href = '/menu/Menu.html'; // Redirect to menu or confirmation page
-        }, 5000); // Simulated 5-second delay for payment success
-    }
+    bayarButton.addEventListener('click', function (event) {
+        const namaLengkap = document.querySelector('input[placeholder="Nama Lengkap"]').value;
+        const email = document.querySelector('input[placeholder="Email"]').value;
+        const nomorHP = document.querySelector('input[placeholder="Nomor HP"]').value;
+        const nomorMeja = document.querySelector('input[placeholder="Nomor Meja"]').value;
+
+        if (!namaLengkap || !email || !nomorHP || (!nomorMeja && nomorMejaField.style.display !== 'none')) {
+            alert('Harap isi semua informasi pembayaran.');
+            event.preventDefault();
+        }
+    });
 });
+
+let paymentMethod = '';
+
+function selectQris() {
+    paymentMethod = 'qris';
+}
+
+function proceedToPayment() {
+    if (paymentMethod === 'qris') {
+        const totalPembayaran = document.querySelector('.total-pembayaran').textContent;
+        localStorage.setItem('totalPembayaran', totalPembayaran);
+        window.location.href = '/payment/MethodQris.html';
+    } else {
+        // Handle other payment methods
+    }
+}
