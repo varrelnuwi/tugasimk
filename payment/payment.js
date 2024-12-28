@@ -1,4 +1,3 @@
-// JavaScript untuk mengelola interaksi
 document.querySelectorAll('.payment-option').forEach((button) => {
     button.addEventListener('click', function () {
         // Hapus status aktif dari semua tombol
