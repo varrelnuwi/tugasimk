@@ -73,7 +73,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    addClickEffect(completePaymentButtons);
+    addClickEffect(completePaymentButtons, function (button) {
+        if (button.textContent.includes('Cash')) {
+            paymentMethod = 'cash';
+        } else if (button.textContent.includes('QRIS')) {
+            paymentMethod = 'qris';
+        } else if (button.textContent.includes('Credit Card/Debit')) {
+            paymentMethod = 'Credit Card/Debit';
+        } else {
+            paymentMethod = '';
+        }
+    });
+
     addClickEffect(orderTypeButtons, function (button) {
         if (button.textContent.includes('Bawa Pulang')) {
             nomorMejaField.style.display = 'none';
@@ -84,14 +95,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const totalPrice = localStorage.getItem('totalPrice');
     if (totalPrice) {
-        totalPembayaranElement.textContent = `$${totalPrice}`;
+        totalPembayaranElement.textContent = `Rp ${parseFloat(totalPrice).toLocaleString('id-ID')}`;
     }
 
     bayarButton.addEventListener('click', function (event) {
-        const namaLengkap = document.querySelector('input[placeholder="Nama Lengkap"]').value;
-        const email = document.querySelector('input[placeholder="Email"]').value;
-        const nomorHP = document.querySelector('input[placeholder="Nomor HP"]').value;
-        const nomorMeja = document.querySelector('input[placeholder="Nomor Meja"]').value;
+        proceedToPayment();
     });
 });
 
@@ -122,7 +130,7 @@ function selectOrderType(type) {
     } else {
         orderType = type;
         if (type === 'dine-in') {
-            showFields(true, false, false, false);
+            showFields(true, true, false, false);
         } else if (type === 'takeaway') {
             showFields(false, true, true, true);
         }
@@ -155,10 +163,23 @@ function proceedToPayment() {
         return;
     }
 
+    const totalPembayaran = parseFloat(document.querySelector('.total-pembayaran').textContent.replace('Rp', '').replace(/\./g, '').replace(',', '.'));
+    const serviceFee = parseFloat(localStorage.getItem('serviceFee'));
+    const totalBill = totalPembayaran + serviceFee;
+
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    localStorage.setItem('totalPembayaran', totalPembayaran.toFixed(2));
+    localStorage.setItem('serviceFee', serviceFee.toFixed(2));
+    localStorage.setItem('totalBill', totalBill.toFixed(2));
+    localStorage.setItem('paymentMethod', paymentMethod);
+    localStorage.setItem('buyerName', namaLengkap);
+
     if (paymentMethod === 'qris') {
-        const totalPembayaran = document.querySelector('.total-pembayaran').textContent;
-        localStorage.setItem('totalPembayaran', totalPembayaran);
         window.location.href = '/payment/MethodQris.html';
+    } else if (paymentMethod === 'cash' || paymentMethod === 'Credit Card/Debit') {
+        window.location.href = '/payment/PembayaranBerhasil.html';
     } else {
         // Handle other payment methods
     }

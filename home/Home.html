@@ -65,5 +65,12 @@
     
     <!-- JavaScript for toggle functionality -->
     <script src="home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Clear cart data in localStorage on home page load
+            localStorage.removeItem('cart');
+            console.log('Cart reset on home page.');
+        });
+    </script>
 </body>
 </html>

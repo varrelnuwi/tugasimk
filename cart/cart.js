@@ -9,7 +9,7 @@ function displayCart() {
 
     if (cartItems.length === 0) {
         cartContainer.innerHTML = `<li class="empty-cart">Your cart is empty.</li>`;
-        totalPriceElement.textContent = `Total: $0.00`;
+        totalPriceElement.textContent = `Total: Rp 0`;
         return;
     }
 
@@ -21,7 +21,7 @@ function displayCart() {
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                 <div class="cart-item-details">
                     <span>${item.name}</span>
-                    <span>$${item.price} x ${item.quantity}</span>
+                    <span>Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity}</span>
                 </div>
             </div>
             <button class="remove-item" data-index="${index}">Remove</button>
@@ -32,7 +32,7 @@ function displayCart() {
         total += item.price * item.quantity;
     });
 
-    totalPriceElement.textContent = `Total: $${total.toFixed(2)}`; // Tampilkan total harga
+    totalPriceElement.textContent = `Total: Rp ${total.toLocaleString('id-ID')}`; // Tampilkan total harga
     localStorage.setItem('totalPrice', total.toFixed(2)); // Simpan total harga ke localStorage
 
     // Tambahkan event listener untuk tombol remove
@@ -74,6 +74,11 @@ function redirectToPayment() {
         alert("Your cart is empty! Please add items to proceed.");
         return;
     }
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    const serviceFee = 5000; // Example service fee
+    const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+    localStorage.setItem('serviceFee', serviceFee); // Simpan service fee ke localStorage
     window.location.href = '/payment/pay.html'; // Sesuaikan path ke lokasi file pembayaran Anda
 }
 
