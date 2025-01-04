@@ -36,31 +36,32 @@ body {
 }
 
 .bg-custom {
-    background-color: #3b82f6;
+    background-color: #ffb03b;
 }
 
 .text-custom {
-    color: #3b82f6;
+    color: #ffb03b;
 }
 
 .border-custom {
-    border-color: #3b82f6;
+    border-color: #ffb03b;
 }
 
 .hover\:border-custom:hover {
-    border-color: #3b82f6;
+    border-color: #ffb03b;
 }
 
 .hover\:bg-custom\/90:hover {
-    background-color: rgba(59, 130, 246, 0.9);
+    background-color: rgba(211, 211, 211, 0.9); 
 }
 
+
 .focus\:border-custom:focus {
-    border-color: #3b82f6;
+    border-color: #ffb03b;
 }
 
 .focus\:ring-custom:focus {
-    --tw-ring-color: #3b82f6;
+    --tw-ring-color: #ffb03b;
 }
 
 .rounded-button {
