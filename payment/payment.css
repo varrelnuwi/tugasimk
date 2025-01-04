@@ -82,14 +82,14 @@ body {
 
 /* Hover effect for Complete Payment buttons */
 .complete-payment button.hover {
-    background-color: #333333;
+    background-color: rgba(211, 211, 211, 0.9);
     transform: translateY(-1px);
 }
 
 /* Active state for Complete Payment buttons */
 .complete-payment button.active {
-    background-color: #333333;
-    color: #ffffff;
+    background-color: rgba(211, 211, 211, 0.9);
+    color: #000000;
 }
 
 /* Hover effect for Tipe Pesanan buttons */
