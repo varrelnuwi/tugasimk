@@ -176,6 +176,11 @@
             item.querySelector('.cart-button').disabled = false;
         });
         localStorage.removeItem('soldOutItems');
+        location.reload(); // Reload halaman setelah reset menu
+    }
+
+    function navigateToPage(page) {
+        window.location.href = page;
     }
 </script>
 </html>

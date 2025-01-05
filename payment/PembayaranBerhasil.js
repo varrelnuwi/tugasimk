@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.removeItem('buyerName');
         console.log('Cart data cleared.');
         window.location.href = '/menu/Menu.html';
+         // Reload halaman setelah menghapus data cart
     });
 
     // Tandai item sebagai habis setelah pembayaran berhasil

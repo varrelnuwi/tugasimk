@@ -95,6 +95,7 @@ function resetMenu() {
     });
     localStorage.removeItem('soldOutItems');
     updateCartCount();
+    location.reload(); // Reload halaman tanpa delay
 }
 
 // Simulasi pembayaran berhasil
