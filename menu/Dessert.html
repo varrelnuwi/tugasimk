@@ -102,6 +102,12 @@
             item.classList.remove('unavailable');
             item.querySelector('.cart-button').disabled = false;
         });
+        localStorage.removeItem('soldOutItems');
+        location.reload(); // Reload the page
+    }
+
+    function navigateToPage(page) {
+        window.location.href = page;
     }
 </script>
 </html>

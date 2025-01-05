@@ -84,6 +84,7 @@ function markItemsAsSoldOut() {
 }
 
 // Fungsi untuk mereset menu agar tersedia kembali
+// Fungsi untuk mereset menu agar tersedia kembali
 function resetMenu() {
     const soldOutItems = document.querySelectorAll('.pizza-item.sold-out');
     soldOutItems.forEach(item => {

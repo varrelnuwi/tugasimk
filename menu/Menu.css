@@ -142,3 +142,7 @@ header p {
     background-color: gray;
     cursor: not-allowed;
 }
+.unavailable {
+    opacity: 0.5;
+    pointer-events: none;
+}

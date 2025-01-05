@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Drink.css">
+    <link rel="stylesheet" href="/menu/Menu.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Trattoria Bella Notte Menu-Lasagna</title>
 </head>
@@ -174,6 +174,22 @@
             item.classList.remove('unavailable');
             item.querySelector('.cart-button').disabled = false;
         });
+        localStorage.removeItem('soldOutItems');
+        location.reload(); // Reload the page
     }
+
+    function navigateToPage(page) {
+        window.location.href = page;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const soldOutItems = JSON.parse(localStorage.getItem('soldOutItems')) || [];
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            if (soldOutItems.includes(item.dataset.item)) {
+                item.classList.add('unavailable');
+                item.querySelector('.cart-button').disabled = true;
+            }
+        });
+    });
 </script>
 </html>

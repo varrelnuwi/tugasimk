@@ -157,6 +157,7 @@
                 </div>
                 
             </section>
+
             <button id="reset-menu-button">Reset Menu</button>
         </main>
     </div>
@@ -176,7 +177,7 @@
             item.querySelector('.cart-button').disabled = false;
         });
         localStorage.removeItem('soldOutItems');
-        location.reload(); // Reload halaman setelah reset menu
+        location.reload(); // Reload the page
     }
 
     function navigateToPage(page) {
