@@ -3,6 +3,7 @@ function displayCart() {
     const cartContainer = document.getElementById("cart-items");
     const totalPriceElement = document.getElementById("total-price");
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || []; // Ambil data dari localStorage
+    const soldOutItems = JSON.parse(localStorage.getItem('soldOutItems')) || []; // Ambil data sold out dari localStorage
 
     cartContainer.innerHTML = ""; // Kosongkan tampilan sebelumnya
     let total = 0;
@@ -16,6 +17,9 @@ function displayCart() {
     cartItems.forEach((item, index) => {
         const itemElement = document.createElement("li");
         itemElement.classList.add("cart-item");
+        if (soldOutItems.includes(item.name)) {
+            itemElement.classList.add('sold-out');
+        }
         itemElement.innerHTML = `
             <div class="cart-item-content">
                 <img src="${item.image}" alt="${item.name}" class="cart-item-image">

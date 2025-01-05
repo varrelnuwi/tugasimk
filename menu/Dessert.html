@@ -35,7 +35,7 @@
             </header>
             
             <section class="pizza-menu">
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Vanilla Panna Cotta">
                     <img src="/assets/menu/Dessert/puding.jpg" alt="Vanilla Panna Cotta" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Vanilla Panna Cotta</h3>
                     <p>Rp 50.000</p>
@@ -47,7 +47,7 @@
                     <button class="cart-button" onclick="addToCart('Vanilla Panna Cotta', 50000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="RollCake Crumble">
                     <img src="/assets/menu/Dessert/cake crumble.jpg" alt="RollCake Crumble"
                     class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>RollCake Crumble</h3>
@@ -60,7 +60,7 @@
                     <button class="cart-button" onclick="addToCart('RollCake Crumble', 80000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Chocolatte Tiramisu">
                     <img src="/assets/menu/Dessert/chocolatte tiramisu.jpeg" alt="Chocolatte Tiramisu" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Chocolatte Tiramisu</h3>
                     <p>Rp 100.000</p>
@@ -72,7 +72,7 @@
                     <button class="cart-button" onclick="addToCart('Chocolatte Tiramisu', 100000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Ice Cream">
                     <img src="/assets/menu/Dessert/ice cream.jpeg" alt="Ice Cream" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Ice Cream</h3>
                     <p>Rp 50.000</p>
@@ -89,4 +89,19 @@
     </div>
 </body>
 <script src="/menu/menu.js"></script>
+<script>
+    function markItemsUnavailable() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.add('unavailable');
+            item.querySelector('.cart-button').disabled = true;
+        });
+    }
+
+    function resetMenu() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.remove('unavailable');
+            item.querySelector('.cart-button').disabled = false;
+        });
+    }
+</script>
 </html>

@@ -132,3 +132,13 @@ header p {
 .cart-button:hover {
     background-color: #ff6347;
 }
+
+.pizza-item.sold-out {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.pizza-item.sold-out .cart-button {
+    background-color: gray;
+    cursor: not-allowed;
+}

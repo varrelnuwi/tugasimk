@@ -35,7 +35,7 @@
             </header>
             
             <section class="pizza-menu">
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Spicy Pizza">
                     <img src="/assets/menu/pizza/Spicy Pizza.jpg" alt="Spicy Pizza" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Spicy Pizza</h3>
                     <p>Rp 120.000</p>
@@ -47,7 +47,7 @@
                     <button class="cart-button" onclick="addToCart('Spicy Pizza', 120000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="BBQ Chicken Pizza">
                     <img src="/assets/menu/pizza/BBQ Chicken pizza.jpg" alt="BBQ Chicken Pizza"
                     class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>BBQ Chicken Pizza</h3>
@@ -60,7 +60,7 @@
                     <button class="cart-button" onclick="addToCart('BBQ Chicken Pizza', 140000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Buffalo Cauliflower Pizza">
                     <img src="/assets/menu/pizza/Buffalo Cauliflower.jpg" alt="Buffalo Cauliflower Pizza" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Buffalo Cauliflower</h3>
                     <p>Rp 110.000</p>
@@ -72,7 +72,7 @@
                     <button class="cart-button" onclick="addToCart('Buffalo Cauliflower Pizza', 110000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Hawaiian Pizza">
                     <img src="/assets/menu/pizza/Hawaiian pizza.jpg" alt="Hawaiian Pizza"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Hawaiian Pizza</h3>
                     <p>Rp 130.000</p>
@@ -84,7 +84,7 @@
                     <button class="cart-button" onclick="addToCart('Hawaiian Pizza', 130000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Margherita Pizza">
                     <img src="/assets/menu/pizza/Margherita pizza.jpg" alt="Margherita Pizza"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Margherita Pizza</h3>
                     <p>Rp 100.000</p>
@@ -96,7 +96,7 @@
                     <button class="cart-button" onclick="addToCart('Margherita Pizza', 100000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Pepperoni Pizza">
                     <img src="/assets/menu/pizza/Pepperoni pizza.jpg" alt="Pepperoni Pizza"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Pepperoni Pizza</h3>
                     <p>Rp 150.000</p>
@@ -108,7 +108,7 @@
                     <button class="cart-button" onclick="addToCart('Pepperoni Pizza', 150000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="greak pizza">
                     <img src="/assets/menu/pizza//greak pizza.jpg" alt="greak pizza"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>greak pizza</h3>
                     <p>Rp 140.000</p>
@@ -120,7 +120,7 @@
                     <button class="cart-button" onclick="addToCart('greak pizza', 140000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Truffle Mushroom pizza">
                     <img src="/assets/menu/pizza/Truffle Mushroom pizza.jpg" alt="Truffle Mushroom pizza"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Truffle Mushroom</h3>
                     <p>Rp 180.000</p>
@@ -132,7 +132,7 @@
                     <button class="cart-button" onclick="addToCart('Truffle Mushroom pizza', 180000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Vegetarian Pizza">
                     <img src="/assets/menu/pizza/Vegetarian pizza.jpg" alt="Vegetarian Pizza" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Vegetarian Pizza</h3>
                     <p>Rp 120.000</p>
@@ -144,7 +144,7 @@
                     <button class="cart-button" onclick="addToCart('Vegetarian Pizza', 120000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="neptune Pizza">
                     <img src="/assets/menu/pizza/neptune pizza.jpg" alt="neptune Pizza" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>neptune Pizza</h3>
                     <p>Rp 160.000</p>
@@ -157,8 +157,25 @@
                 </div>
                 
             </section>
+            <button id="reset-menu-button">Reset Menu</button>
         </main>
     </div>
 </body>
 <script src="/menu/menu.js"></script>
+<script>
+    function markItemsUnavailable() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.add('unavailable');
+            item.querySelector('.cart-button').disabled = true;
+        });
+    }
+
+    function resetMenu() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.remove('unavailable');
+            item.querySelector('.cart-button').disabled = false;
+        });
+        localStorage.removeItem('soldOutItems');
+    }
+</script>
 </html>

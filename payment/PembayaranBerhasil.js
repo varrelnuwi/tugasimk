@@ -46,4 +46,21 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Cart data cleared.');
         window.location.href = '/menu/Menu.html';
     });
+
+    // Tandai item sebagai habis setelah pembayaran berhasil
+    markItemsAsSoldOut();
 });
+
+// Fungsi untuk menandai item sebagai habis
+function markItemsAsSoldOut() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const soldOutItems = JSON.parse(localStorage.getItem('soldOutItems')) || [];
+
+    cartItems.forEach(item => {
+        if (!soldOutItems.includes(item.name)) {
+            soldOutItems.push(item.name);
+        }
+    });
+
+    localStorage.setItem('soldOutItems', JSON.stringify(soldOutItems));
+}

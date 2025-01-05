@@ -32,6 +32,12 @@ function updateQuantity(button, change) {
 
 // Fungsi untuk menambahkan item ke cart
 function addToCart(name, price) {
+    const soldOutItems = JSON.parse(localStorage.getItem('soldOutItems')) || [];
+    if (soldOutItems.includes(name)) {
+        alert(`${name} is sold out and cannot be added to the cart.`);
+        return;
+    }
+
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const quantityElement = document.querySelector(`.pizza-item:has(img[alt="${name}"]) .quantity`);
     const quantity = parseInt(quantityElement.textContent);
@@ -62,7 +68,47 @@ function updateCartCount() {
     }
 }
 
-// Panggil fungsi saat halaman dimuat
+// Fungsi untuk menandai item sebagai habis
+function markItemsAsSoldOut() {
+    const soldOutItems = JSON.parse(localStorage.getItem('soldOutItems')) || [];
+    soldOutItems.forEach(name => {
+        const itemElement = document.querySelector(`.pizza-item:has(img[alt="${name}"])`);
+        if (itemElement) {
+            itemElement.classList.add('sold-out');
+            const addToCartButton = itemElement.querySelector('.cart-button');
+            if (addToCartButton) {
+                addToCartButton.disabled = true;
+            }
+        }
+    });
+}
+
+// Fungsi untuk mereset menu agar tersedia kembali
+function resetMenu() {
+    const soldOutItems = document.querySelectorAll('.pizza-item.sold-out');
+    soldOutItems.forEach(item => {
+        item.classList.remove('sold-out');
+        const addToCartButton = item.querySelector('.cart-button');
+        if (addToCartButton) {
+            addToCartButton.disabled = false;
+        }
+    });
+    localStorage.removeItem('soldOutItems');
+    updateCartCount();
+}
+
+// Simulasi pembayaran berhasil
+function simulatePaymentSuccess() {
+    // ...kode pembayaran...
+    markItemsAsSoldOut();
+}
+
+// Event listener untuk tombol reset menu
 document.addEventListener("DOMContentLoaded", () => {
+    const resetButton = document.getElementById('reset-menu-button');
+    if (resetButton) {
+        resetButton.addEventListener('click', resetMenu);
+    }
     updateCartCount(); // Update jumlah item di menu
+    markItemsAsSoldOut(); // Tandai item yang sudah habis
 });

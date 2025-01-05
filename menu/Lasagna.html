@@ -35,7 +35,7 @@
             </header>
             
             <section class="pizza-menu">
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna ai Funghi">
                     <img src="/assets/menu/Lasagna/Lasagna ai Funghi.jpg" alt="Lasagna ai Funghi" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna ai Funghi</h3>
                     <p>Rp 150.000</p>
@@ -47,7 +47,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna ai Funghi', 150000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna al Forno">
                     <img src="/assets/menu/Lasagna/Lasagna al Forno.jpg" alt="Lasagna al Forno"
                     class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna al Forno</h3>
@@ -60,7 +60,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna al Forno', 140000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna al Pesto">
                     <img src="/assets/menu/Lasagna/Lasagna al Pesto.jpg" alt="Lasagna al Pesto" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna al Pesto</h3>
                     <p>Rp 160.000</p>
@@ -72,7 +72,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna al Pesto', 160000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna al ragù">
                     <img src="/assets/menu/Lasagna/Lasagna al ragù.jpg" alt="Lasagna al ragù"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna al ragù</h3>
                     <p>Rp 170.000</p>
@@ -84,7 +84,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna al ragù', 170000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna alla Bolognese">
                     <img src="/assets/menu/Lasagna/Lasagna alla Bolognese.jpg" alt="Lasagna alla Bolognese"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna alla Bolognese</h3>
                     <p>Rp 180.000</p>
@@ -96,7 +96,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna alla Bolognese', 180000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna di primavera">
                     <img src="/assets/menu/Lasagna/Lasagna di primavera.jpg" alt="Lasagna di primavera"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna di primavera</h3>
                     <p>Rp 130.000</p>
@@ -108,7 +108,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna di primavera', 130000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna Napoletana">
                     <img src="/assets/menu/Lasagna/Lasagna Napoletana.jpg" alt="Lasagna Napoletana"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna Napoletana</h3>
                     <p>Rp 190.000</p>
@@ -120,7 +120,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna Napoletana', 190000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna Piccante">
                     <img src="/assets/menu/Lasagna/Lasagna Piccante.jpg" alt="Lasagna Piccante"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Negroni</h3>
                     <p>Rp 170.000</p>
@@ -132,7 +132,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna Piccante', 170000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Lasagna Vegan">
                     <img src="/assets/menu/Lasagna/Lasagna Vegan.jpg" alt="Lasagna Vegan" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Lasagna Vegan   </h3>
                     <p>Rp 150.000</p>
@@ -144,7 +144,7 @@
                     <button class="cart-button" onclick="addToCart('Lasagna Vegan', 150000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="chiken lasagna">
                     <img src="/assets/menu/Lasagna/chiken lasagna.jpg" alt="chiken lasagna" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>chiken lasagna</h3>
                     <p>Rp 140.000</p>
@@ -161,4 +161,19 @@
     </div>
 </body>
 <script src="/menu/menu.js"></script>
+<script>
+    function markItemsUnavailable() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.add('unavailable');
+            item.querySelector('.cart-button').disabled = true;
+        });
+    }
+
+    function resetMenu() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.remove('unavailable');
+            item.querySelector('.cart-button').disabled = false;
+        });
+    }
+</script>
 </html>

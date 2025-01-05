@@ -35,7 +35,7 @@
             </header>
             
             <section class="pizza-menu">
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Aperol">
                     <img src="/assets/menu/Minuman/Aperol Spritz.jpg" alt="Aperol" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Aperol</h3>
                     <p>Rp 100,000</p>
@@ -47,7 +47,7 @@
                     <button class="cart-button" onclick="addToCart('Aperol', 100000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Birra Moretti">
                     <img src="/assets/menu/Minuman/Birra Moretti.jpg" alt="Birra Moretti"
                     class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Birra Moretti</h3>
@@ -60,7 +60,7 @@
                     <button class="cart-button" onclick="addToCart('Birra Moretti', 70000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="bittersweet campari">
                     <img src="/assets/menu/Minuman/bittersweet campari.jpg" alt="bittersweet campari" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>bittersweet campari</h3>
                     <p>Rp 80,000</p>
@@ -72,7 +72,7 @@
                     <button class="cart-button" onclick="addToCart('bittersweet campari', 80000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="coffe">
                     <img src="/assets/menu/Minuman/coffe.jpg" alt="coffe"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>coffe</h3>
                     <p>Rp 40,000</p>
@@ -84,7 +84,7 @@
                     <button class="cart-button" onclick="addToCart('coffe', 40000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Italian Red Wine">
                     <img src="/assets/menu/Minuman/Italian Red Wine.jpg" alt="Italian Red Wine"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Italian Red Wine</h3>
                     <p>Rp 120,000</p>
@@ -96,7 +96,7 @@
                     <button class="cart-button" onclick="addToCart('Italian Red Wine', 120000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Limoncello">
                     <img src="/assets/menu/Minuman/Limoncello.jpg" alt="Limoncello"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Limoncello</h3>
                     <p>Rp 90,000</p>
@@ -108,7 +108,7 @@
                     <button class="cart-button" onclick="addToCart('Limoncello', 90000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Mineral Water">
                     <img src="/assets/menu/Minuman/Mineral Water.jpg" alt="Mineral Water"class="rounded-md sm:h-42 md:h-45 lg:h-64">
                     <h3>Mineral Water</h3>
                     <p>Rp 30,000</p>
@@ -120,7 +120,7 @@
                     <button class="cart-button" onclick="addToCart('Mineral Water', 30000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Negroni">
                     <img src="/assets/menu/Minuman/Negroni.jpg" alt="Negroni"class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Negroni</h3>
                     <p>Rp 110,000</p>
@@ -132,7 +132,7 @@
                     <button class="cart-button" onclick="addToCart('Negroni', 110000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Prosecco cocktails">
                     <img src="/assets/menu/Minuman/Prosecco cocktails.jpg" alt="Prosecco cocktails" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Prosecco cocktails</h3>
                     <p>Rp 100,000</p>
@@ -144,7 +144,7 @@
                     <button class="cart-button" onclick="addToCart('Prosecco cocktails', 100000)">Add to Cart</button>
                 </div>
 
-                <div class="pizza-item">
+                <div class="pizza-item" data-item="Bellini">
                     <img src="/assets/menu/Minuman/Bellini.jpg" alt="Bellini" class="rounded-md w-full sm:h-40 md:h-45 lg:h-64">
                     <h3>Bellini</h3>
                     <p>Rp 80,000</p>
@@ -161,4 +161,19 @@
     </div>
 </body>
 <script src="/menu/menu.js"></script>
+<script>
+    function markItemsUnavailable() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.add('unavailable');
+            item.querySelector('.cart-button').disabled = true;
+        });
+    }
+
+    function resetMenu() {
+        document.querySelectorAll('.pizza-item').forEach(item => {
+            item.classList.remove('unavailable');
+            item.querySelector('.cart-button').disabled = false;
+        });
+    }
+</script>
 </html>
