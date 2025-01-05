@@ -44,7 +44,7 @@ body {
 }
 
 .border-custom {
-    border-color: #ffb03b;
+    border-color: hsl(36, 100%, 62%);
 }
 
 .hover\:border-custom:hover {

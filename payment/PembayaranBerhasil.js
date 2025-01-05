@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <img src="${item.image}" alt="Product" class="w-16 h-16 rounded-lg mr-4"/>
                 <div>
                     <h3 class="font-semibold">${item.name}</h3>
-                    <p class="text-gray-400">${item.description}</p>
+                    <p class="text-gray-400">Rp ${item.price.toLocaleString('id-ID')}</p>
                 </div>
             </div>
             <span>${item.quantity}x</span>
@@ -65,3 +65,80 @@ function markItemsAsSoldOut() {
 
     localStorage.setItem('soldOutItems', JSON.stringify(soldOutItems));
 }
+// Tambahkan kode ini di PembayaranBerhasil.js
+class ReceiptPDFGenerator {
+    constructor() {
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        const downloadButton = document.getElementById('download-receipt');
+        if (downloadButton) {
+            downloadButton.addEventListener('click', () => this.generateReceipt());
+        }
+    }
+
+    async generateReceipt() {
+        try {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            // Set font untuk mendukung karakter khusus
+            doc.setFont('helvetica', 'normal');
+
+            // Header
+            doc.setFontSize(16);
+            doc.text("Bukti Pembayaran", 20, 20);
+
+            // Informasi transaksi
+            doc.setFontSize(12);
+            doc.text("No. Transaksi: TRX123456789", 20, 30);
+            doc.text("Tanggal Transaksi: " + document.getElementById('transaction-date').textContent, 20, 40);
+
+            // Detail produk
+            doc.text("Detail Produk:", 20, 50);
+            let yPos = 60;
+
+            // Ambil detail produk dari cart
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.forEach(item => {
+                doc.text(`${item.name} - ${item.quantity}x - Rp ${item.price.toLocaleString('id-ID')}`, 25, yPos);
+                yPos += 10;
+            });
+
+            // Informasi pembayaran
+            yPos += 10;
+            doc.text("Total Pembayaran: " + document.getElementById('total-payment').textContent, 20, yPos);
+            yPos += 10;
+            doc.text("Biaya Layanan: " + document.getElementById('service-fee').textContent, 20, yPos);
+            yPos += 10;
+            doc.text("Total Tagihan: " + document.getElementById('total-bill').textContent, 20, yPos);
+            yPos += 10;
+            doc.text("Metode Pembayaran: " + document.getElementById('payment-method').textContent, 20, yPos);
+            yPos += 10;
+            doc.text("Nama Pembeli: " + document.getElementById('buyer-name').textContent, 20, yPos);
+
+            // Footer dengan timestamp
+            doc.setFontSize(8);
+            const timestamp = new Date().toLocaleString('id-ID');
+            doc.text(`Dicetak pada: ${timestamp}`, 20, 280);
+
+            // Simpan PDF
+            doc.save('Bukti_Pembayaran.pdf');
+
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+            alert('Terjadi kesalahan saat membuat PDF. Silakan coba lagi.');
+        }
+    }
+}
+
+// Inisialisasi PDF generator setelah DOM loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Inisialisasi generator PDF
+    new ReceiptPDFGenerator();
+});

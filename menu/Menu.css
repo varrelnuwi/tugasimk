@@ -146,3 +146,6 @@ header p {
     opacity: 0.5;
     pointer-events: none;
 }
+#reset-menu-button {
+    margin-top: 20px;
+}
